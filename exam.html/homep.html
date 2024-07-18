@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #5d9996;
+        }
+        header {
+            background-color: #044ce6;
+            border-bottom: 1px solid #e21e1e;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        header .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        header input[type="text"] {
+            padding: 5px;
+            width: 200px;
+        }
+        header .icons {
+            font-size: 20px;
+            display: flex;
+            gap: 15px;
+        }
+        header .icons i {
+            cursor: pointer;
+        }
+        main {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .content {
+            flex: 2;
+            max-width: 600px;
+            margin-right: 20px;
+        }
+        .content .post {
+            background-color: #b69393;
+            border: 1px solid #0a0a0a;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .content .post img {
+            width: 100%;
+        }
+        .content .post .post-details {
+            padding: 10px;
+        }
+        .sidebar {
+            flex: 1;
+            max-width: 300px;
+        }
+        .sidebar .profile {
+            background-color: #abb175;
+            border: 1px solid #050505;
+            padding: 10px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .sidebar .profile img {
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+        .sidebar .profile .username {
+            font-weight: bold;
+        }
+        .sidebar .menu {
+            background-color: #a79e56;
+            border: 1px solid #0c0c0c;
+            border-radius: 5px;
+            padding: 10px;
+        }
+        .sidebar .menu div {
+            padding: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        .sidebar .menu div:hover {
+            background-color: #a11717;
+        }
+        .sidebar .menu i {
+            margin-right: 10px;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .hh{
+            justify-content: left;
+        }
+        .messages .contact-list, .messages .chat-box {
+            background-color: #fff;
+            border: 1px solid #dbdbdb;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .messages .contact-list div, .messages .chat-box div {
+            padding: 10px;
+            cursor: pointer;
+        }
+        .messages .contact-list div:hover {
+            background-color: #f0f0f0;
+        }
+        .messages .chat-box {
+            display: none;
+        }
+        .content.tab-content#settings {
+    padding: 20px;
+}
+
+.settings-list {
+    background-color: #fff;
+    border: 1px solid #dbdbdb;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.setting-item {
+    cursor: pointer;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.setting-item:hover {
+    background-color: #f0f0f0;
+}
+
+.setting-item i {
+    margin-right: 10px;
+}
+
+.setting-panel {
+    display: none;
+    background-color: #fff;
+    border: 1px solid #dbdbdb;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.setting-panel h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.setting-panel p {
+    line-height: 1.6;
+}
+
+        .nav-bar {
+            display: flex;
+            justify-content: space-around;
+            background-color: #2d2fa5;
+            border-top: 1px solid #d12424;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            padding: 10px 0;
+        }
+        .nav-bar i {
+            font-size: 24px;
+            cursor: pointer;
+        }
+        @media (max-width: 768px) {
+            main {
+                flex-direction: column;
+                align-items: center;
+            }
+            .content {
+                margin-right: 0;
+            }
+            .sidebar {
+                max-width: 100%;
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Instagram</div>
+        <input type="text" placeholder="Search">
+        <div class="icons">
+            <i class="fas fa-home" onclick="showTab('home')"></i>
+            <i class="fas fa-search" onclick="showTab('search')"></i>
+            <i class="fas fa-cog" onclick="showTab('settings')"></i>
+        </div>
+    </header>
+    <main>
+        <!-- <h1 class="hh">Recent Posts</h1> -->
+        <div class="content tab-content" id="home">
+            <div class="post">
+                <img src="images (1).jpg" alt="Post Image">
+                <div class="post-details">
+                    <p><strong>❤️💬➕</strong> Liked by abiram,navi,rahul ...</p><hr>
+                       <p> I am glad to share my car in the insta post .. its my one of the fav among the car collection tht i have !!</p>
+                </div>
+            </div>
+            <div class="post">
+                <img src="images.jpg" alt="Post Image">
+                <div class="post-details">
+                    <p><strong>❤️💬➕</strong> Liked by navi,rahul,priya ...</p><hr> 
+                   <p> my fav actor with new look 🥰.</p>
+                </div>
+            </div>
+            <div class="post">
+                <img src="images (2).jpg" alt="Post Image">
+                <div class="post-details">
+                    <p><strong>❤️💬➕</strong> Liked by navi,rahul,priya ...</p><hr> 
+                   <p> I spend my weekend in the kolli hills✨.Such an memories and wonderful experience .😍</p>
+                </div>
+            </div>
+        </div>
+        <div class="content tab-content" id="search">
+            <h2>Search</h2>
+            <p>Search functionality will be here.</p>
+        </div>
+        <div class="content tab-content" id="settings">
+            <h2>Settings</h2>
+            <div class="settings-list">
+                <div class="setting-item" onclick="openSetting('edit-profile')">
+                    <i class="fas fa-user"></i> Edit Profile
+                </div>
+                <div class="setting-item" onclick="openSetting('change-password')">
+                    <i class="fas fa-lock"></i> Change Password
+                </div>
+                <div class="setting-item" onclick="openSetting('notifications')">
+                    <i class="fas fa-bell"></i> Notifications
+                </div>
+                <div class="setting-item" onclick="openSetting('privacy')">
+                    <i class="fas fa-sync-alt"></i> Privacy
+                </div>
+            </div>
+        
+            <!-- Settings Panels -->
+            <div class="setting-panel" id="edit-profile-panel">
+                <h3>Edit Profile</h3>
+                <p>Settings for editing your profile.</p>
+            </div>
+            <div class="setting-panel" id="change-password-panel">
+                <h3>Change Password</h3>
+                <p>Settings for changing your password.</p>
+            </div>
+            <div class="setting-panel" id="notifications-panel">
+                <h3>Notifications</h3>
+                <p>Settings for managing notifications.</p>
+            </div>
+            <div class="setting-panel" id="privacy-panel">
+                <h3>Privacy</h3>
+                <p>Settings for managing privacy options.</p>
+            </div>
+        </div>
+        
+        <div class="content tab-content" id="settings">
+            <h2>Settings</h2>
+            <div class="settings-list">
+                <div class="setting-item" onclick="openSetting('edit-profile')">
+                    <i class="fas fa-user"></i> Edit Profile
+                </div>
+                <div class="setting-item" onclick="openSetting('change-password')">
+                    <i class="fas fa-lock"></i> Change Password
+                </div>
+                <div class="setting-item" onclick="openSetting('notifications')">
+                    <i class="fas fa-bell"></i> Notifications
+                </div>
+                <div class="setting-item" onclick="openSetting('privacy')">
+                    <i class="fas fa-sync-alt"></i> Privacy
+                </div>
+            </div>
+        
+            <!-- Settings Panels -->
+            <div class="setting-panel" id="edit-profile-panel">
+                <h3>Edit Profile</h3>
+                <p>Settings for editing your profile.</p>
+            </div>
+            <div class="setting-panel" id="change-password-panel">
+                <h3>Change Password</h3>
+                <p>Settings for changing your password.</p>
+            </div>
+            <div class="setting-panel" id="notifications-panel">
+                <h3>Notifications</h3>
+                <p>Settings for managing notifications.</p>
+            </div>
+            <div class="setting-panel" id="privacy-panel">
+                <h3>Privacy</h3>
+                <p>Settings for managing privacy options.</p>
+            </div>
+        </div>
+            <div class="setting-panel" id="privacy-panel">
+                <h3>Privacy</h3>
+                <p>Settings for managing privacy options.</p>
+            </div>
+        </div>
+        
+        <div class="content tab-content" id="messages">
+            <h2>Messages</h2>
+            <div class="messages">
+                <div class="contact-list">
+                    <div onclick="openChat('contact1')">Ravichandran MCT</div>
+                    <div onclick="openChat('contact2')">Priya kavi</div>
+                    <div onclick="openChat('contact3')">Ajmeer</div>
+                </div>
+                <div class="chat-box" id="contact1">
+                    <div>Ravichandran: Hello!</div>
+                    <div>You: Hi there!</div>
+                </div>
+                <div class="chat-box" id="contact2">
+                    <div>Priya kavi: How are you?</div>
+                    <div>You: I'm good, thanks!</div>
+                </div>
+                <div class="chat-box" id="contact3">
+                    <div>Ajmeer: Are you available tomorrow?</div>
+                    <div>You: Yes, I am.</div>
+                </div>
+            </div>
+        </div>
+        <div class="content tab-content" id="notifications">
+            <h2>Notifications</h2>
+            <p>nothing has been recieved yet 😟</p>
+        </div>
+        <div class="sidebar">
+            <div class="profile">
+                <img src="193d429c680f74c84e6f7c4cbf0ac7a6.jpg" alt="Profile Picture">
+                <div class="username">Anuj priyan</div>
+            </div>
+            <div class="menu">
+                <div onclick="showTab('home')"><i class="fas fa-home"></i> Home</div>
+                <div onclick="showTab('messages')"><i class="fas fa-envelope"></i> Messages</div>
+                <div onclick="showTab('notifications')"><i class="fas fa-bell"></i> Notifications</div>
+                <div onclick="showTab('settings')"><i class="fas fa-cog"></i> Settings</div>
+            </div>
+        </div>
+    </main>
+    <div class="nav-bar">
+        <i class="fas fa-home" onclick="showTab('home')"></i>
+        <i class="fas fa-search" onclick="showTab('search')"></i>
+        <i class="fas fa-cog" onclick="showTab('settings')"></i>
+    </div>
+    <script>
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.getElementById(tabId).classList.add('active');
+        }
+        function openChat(contactId) {
+            document.querySelectorAll('.chat-box').forEach(chat => {
+                chat.style.display = 'none';
+            });
+            document.getElementById(contactId).style.display = 'block';
+        }
+        function openSetting(settingId) {
+    // Hide all setting panels
+    document.querySelectorAll('.setting-panel').forEach(panel => {
+        panel.style.display = 'none';
+    });
+
+    // Display the selected setting panel
+    document.getElementById(settingId + '-panel').style.display = 'block';
+}
+
+        // Set default tab
+        showTab('home');
+    </script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>
